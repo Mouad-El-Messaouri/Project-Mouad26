@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+	<head>
+    <meta charset="utf-8">
+    <title>Mouad CV</title>
+	<link rel="icon" href="images/mouad1.jpg" type="image/x-icon">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px 25px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Foto + texto en columnas sencillas */
+        .header {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 20px;
+            align-items: start;
+            margin-bottom: 30px;
+        }
+
+        .header img {
+            width: 220px;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        /* Secciones generales */
+        section {
+            margin-bottom: 25px;
+        }
+
+        /* Vídeos en fila con wrap */
+        .videos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .videos iframe {
+            border: none;
+            width: 260px;
+            aspect-ratio: 16 / 9;
+        }
+
+        /* Artistas en fila */
+        .artists {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .artists img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        /* Redes sociales */
+        .social {
+            text-align: center;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-icons img {
+            width: 60px;
+            height: 60px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 15px;
+            color: #6d6c6c;
+            font-size: 0.9rem;
+        }
+
+    </style>
+</head>
+<body>
+	
+    <div class="page">
+        <h1>Mouad CV</h1>
+
+        <div class="header">
+            <img src="images/mouad.jpeg" alt="Mouad Photo">
+            <div>
+                <p>My name is <strong>Mouad</strong> and my parents are named <em>Ahmed and Zohra.</em></p>
+                <p>I have 2 younger brothers, Tarik and Nabil. I am 21 years old.</p>
+                <p>I was born in Sant Cugat and I live in Rubí, although my family and I are originally from a small city in Morocco called <a href="https://en.wikipedia.org/wiki/Larache" target="_blank">Larache</a>.</p>
+                <p>I enjoy listening to music and traveling. Last summer I traveled across Europe by train with a friend, crossing <strong>15</strong> countries, starting in England and ending in Serbia.</p>
+                <p>I play football, although I have also practiced Taekwondo for 10 years.</p>
+            </div>
+        </div>
+
+        <section>
+            <h1>My Favorite Movies and Series:</h1>
+            <div class="videos">
+                <iframe src="https://www.youtube.com/embed/Bf6zeRwk5LE?si=8cVv7ZYzpmz4lZIA"></iframe>
+                <iframe src="https://www.youtube.com/embed/xJFHo-MOHh0?si=705ZEj2XrZfrJAqN"></iframe>
+                <iframe src="https://www.youtube.com/embed/YEFAG4nMHp8?si=SKspCDqG5lOyl0vZ"></iframe>
+            </div>
+        </section>
+
+        <section>
+            <h1>My Favorite Artists</h1>
+            <div class="artists">
+                <img src="images/tecca.png" alt="Artist Tecca">
+                <img src="images/leiti.png" alt="Artist Leiti">
+                <img src="images/dave.png" alt="Artist Dave">
+            </div>
+        </section>
+
+        <section class="social">
+            <h1>My Social Networks</h1>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/mouadmb_/" target="_blank">
+                    <img src="images/insta.png" alt="Instagram">
+                </a>
+                <a href="https://x.com/mouadmb_" target="_blank">
+                    <img src="images/x.png" alt="X">
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; Mouad</p>
+			<p><a href="Curriculum-Mouad-css.html">Go back to CV</a></p>
+        </footer>
+    </div>
+</body>
