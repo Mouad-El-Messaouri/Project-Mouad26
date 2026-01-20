@@ -1,113 +1,19 @@
 <!doctype html>
 <html>
-	<head>
+<head>
     <meta charset="utf-8">
     <title>Mouad CV</title>
-	<link rel="icon" href="images/mouad1.jpg" type="image/x-icon">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+    <link rel="icon" href="images/mouad1.jpg" type="image/x-icon">
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f3f3f3;
-            margin: 0;
-            padding: 20px;
-        }
+    <link rel="stylesheet" href="cv-Mouad.css">
 
-        .page {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px 25px 20px;
-        }
-
-        h1 {
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        /* Foto + texto en columnas sencillas */
-        .header {
-            display: grid;
-            grid-template-columns: 220px 1fr;
-            gap: 20px;
-            align-items: start;
-            margin-bottom: 30px;
-        }
-
-        .header img {
-            width: 220px;
-            height: 230px;
-            object-fit: cover;
-            border-radius: 6px;
-        }
-
-        /* Secciones generales */
-        section {
-            margin-bottom: 25px;
-        }
-
-        /* Vídeos en fila con wrap */
-        .videos {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .videos iframe {
-            border: none;
-            width: 260px;
-            aspect-ratio: 16 / 9;
-        }
-
-        /* Artistas en fila */
-        .artists {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .artists img {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 6px;
-        }
-
-        /* Redes sociales */
-        .social {
-            text-align: center;
-        }
-
-        .social-icons {
-            margin-top: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .social-icons img {
-            width: 60px;
-            height: 60px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 15px;
-            color: #6d6c6c;
-            font-size: 0.9rem;
-        }
-
-    </style>
+    <link
+      href="https://unpkg.com/maplibre-gl@^5.13.0/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/maplibre-gl@^5.13.0/dist/maplibre-gl.js"></script>
 </head>
 <body>
-	
     <div class="page">
         <h1>Mouad CV</h1>
 
@@ -140,6 +46,12 @@
             </div>
         </section>
 
+        <!-- Sección del mapa con MapLibre -->
+        <section>
+            <h1>My Map</h1>
+            <div id="map"></div>
+        </section>
+
         <section class="social">
             <h1>My Social Networks</h1>
             <div class="social-icons">
@@ -154,7 +66,56 @@
 
         <footer>
             <p>&copy; Mouad</p>
-			<p><a href="Curriculum-Mouad-css.html">Go back to CV</a></p>
+            <p><a href="Curriculum-Mouad-css.html">Go back to CV</a></p>
         </footer>
     </div>
+
+    <!-- Script para inicializar el mapa -->
+<script>
+    const map = new maplibregl.Map({
+        container: 'map',
+        style: 'https://demotiles.maplibre.org/globe.json',
+        center: [0, 0],
+        zoom: 2
+    });
+
+    // Larache
+    new maplibregl.Marker()
+        .setLngLat([-6.1557, 35.1932])
+        .setPopup(
+            new maplibregl.Popup({ offset: 25 })
+                .setText('Larache (origen)')
+        )
+        .addTo(map);
+
+    // Rubí
+    new maplibregl.Marker()
+        .setLngLat([2.0333, 41.4920])
+        .setPopup(
+            new maplibregl.Popup({ offset: 25 })
+                .setText('Rubí (donde vivo)')
+        )
+        .addTo(map);
+
+    // UCR
+    new maplibregl.Marker()
+        .setLngLat([-117.327335, 33.977037]) // [lng, lat]
+        .setPopup(
+            new maplibregl.Popup({ offset: 25 })
+                .setText('UCR')
+        )
+        .addTo(map);
+
+    // Sant Cugat
+    new maplibregl.Marker()
+        .setLngLat([2.0766, 41.4723])
+        .setPopup(
+            new maplibregl.Popup({ offset: 25 })
+                .setText('Sant Cugat (donde nací)')
+        )
+        .addTo(map);
+</script>
+
+
 </body>
+</html>
