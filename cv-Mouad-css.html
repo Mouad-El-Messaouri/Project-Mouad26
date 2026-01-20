@@ -46,11 +46,22 @@
             </div>
         </section>
 
-        <!-- Sección del mapa con MapLibre -->
-        <section>
-            <h1>My Places</h1>
+        <section class="places">
+        <h1>My Places</h1>
+        <div class="places-layout">
+            <div class="places-text">
+            <p>Here are some of the places that are important in my life:</p>
+            <ul>
+                <li>Larache (origin)</li>
+                <li>Sant Cugat (where I was born)</li>
+                <li>Rubí (where I live)</li>
+                <li>UCR (where I study)</li>
+            </ul>
+            </div>
             <div id="map"></div>
+        </div>
         </section>
+
 
         <section class="social">
             <h1>My Social Networks</h1>
@@ -75,39 +86,58 @@
     const map = new maplibregl.Map({
         container: 'map',
         style: 'https://demotiles.maplibre.org/globe.json',
-        center: [0, 0],
+        center: [10, 50],
         zoom: 2
     });
 
     // Larache
-    new maplibregl.Marker()
-        .setLngLat([-6.1557, 35.1932])
-        .setPopup(
-            new maplibregl.Popup({ offset: 25 })
-                .setText('Larache (origin)')
-        )
-        .addTo(map);
+    const laracheEl = document.createElement("img");
+    laracheEl.src = "images/larache.jpg";
+    laracheEl.alt = "Larache";
+    laracheEl.style.width = "40px";
+    laracheEl.style.borderRadius = "50%";
+
+    new maplibregl.Marker({ element: laracheEl, anchor: "bottom" })
+    .setLngLat([-6.1557, 35.1932])
+    .setPopup(
+        new maplibregl.Popup({ offset: 25 }).setText("Larache (origin)")
+    )
+    .addTo(map);
+
+    const rubiEl = document.createElement("img");
+    rubiEl.src = "images/rubi.jpg";
+    rubiEl.alt = "Rubi";
+    rubiEl.style.width = "40px";
+    rubiEl.style.borderRadius = "50%";
 
     // Rubí
-    new maplibregl.Marker()
+    new maplibregl.Marker({element: rubiEl, anchor: "bottom", offset: [10, 0]  })
         .setLngLat([2.0333, 41.4920])
         .setPopup(
-            new maplibregl.Popup({ offset: 25 })
-                .setText('Rubí (where I live)')
+            new maplibregl.Popup({ offset: 25 }).setText('Rubí (where I live)')
         )
         .addTo(map);
 
+    const ucrEl = document.createElement("img");
+    ucrEl.src = "images/ucr.png";
+    ucrEl.alt = "UCR";
+    ucrEl.style.width = "40px";
+    ucrEl.style.borderRadius = "50%";
     // UCR
-    new maplibregl.Marker()
-        .setLngLat([-117.327335, 33.977037]) // [lng, lat]
+    new maplibregl.Marker({element: ucrEl, anchor: "bottom" })
+        .setLngLat([-117.327335, 33.977037]) 
         .setPopup(
-            new maplibregl.Popup({ offset: 25 })
-                .setText('UCR')
+            new maplibregl.Popup({ offset: 25 }).setText('UCR')
         )
         .addTo(map);
 
+    const sqEl = document.createElement("img");
+    sqEl.src = "images/sq.jpg";
+    sqEl.alt = "Sant Cugat";
+    sqEl.style.width = "40px";
+    sqEl.style.borderRadius = "50%";
     // Sant Cugat
-    new maplibregl.Marker()
+    new maplibregl.Marker({element: sqEl, anchor: "bottom" })
         .setLngLat([2.0766, 41.4723])
         .setPopup(
             new maplibregl.Popup({ offset: 25 })
@@ -119,4 +149,3 @@
 
 </body>
 </html>
-
