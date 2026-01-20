@@ -70,6 +70,7 @@
         </footer>
     </div>
 
+    <!-- Script para inicializar el mapa -->
 <script>
     const map = new maplibregl.Map({
         container: 'map',
@@ -83,7 +84,7 @@
         .setLngLat([-6.1557, 35.1932])
         .setPopup(
             new maplibregl.Popup({ offset: 25 })
-                .setText('Larache (origen)')
+                .setText('Larache (origin)')
         )
         .addTo(map);
 
@@ -92,7 +93,7 @@
         .setLngLat([2.0333, 41.4920])
         .setPopup(
             new maplibregl.Popup({ offset: 25 })
-                .setText('Rubí (donde vivo)')
+                .setText('Rubí (where I live)')
         )
         .addTo(map);
 
@@ -110,7 +111,7 @@
         .setLngLat([2.0766, 41.4723])
         .setPopup(
             new maplibregl.Popup({ offset: 25 })
-                .setText('Sant Cugat (donde nací)')
+                .setText('Sant Cugat (where I was born)')
         )
         .addTo(map);
 </script>
@@ -118,4 +119,3 @@
 
 </body>
 </html>
-
