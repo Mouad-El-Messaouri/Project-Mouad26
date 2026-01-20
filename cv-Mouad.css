@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f3f3;
+    margin: 0;
+    padding: 20px;
+}
+
+.page {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px 25px 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Header: foto + texto */
+.header {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 30px;
+}
+
+.header img {
+    width: 220px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* Secciones generales */
+section {
+    margin-bottom: 25px;
+}
+
+/* Vídeos en fila con wrap */
+.videos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.videos iframe {
+    border: none;
+    width: 260px;
+    aspect-ratio: 16 / 9;
+}
+
+/* Artistas en fila */
+.artists {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.artists img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* Redes sociales */
+.social {
+    text-align: center;
+}
+
+.social-icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-icons img {
+    width: 60px;
+    height: 60px;
+}
+
+/* Contenedor mapa */
+#map {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+    border-radius: 6px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 15px;
+    color: #6d6c6c;
+    font-size: 0.9rem;
+}
