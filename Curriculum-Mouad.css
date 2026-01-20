@@ -1,0 +1,64 @@
+* {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* tarjeta centrada */
+        .cv-page {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+        }
+        nav {
+        display: flex;        
+        gap: 1rem;            
+        justify-content: center; 
+        margin: 20px 0;       /* espacio arriba y abajo */
+        }
+        /* nombre y títulos */
+        h1 {
+            text-align: center;
+            margin: 0 0 10px;
+        }
+
+        h2 {
+            margin: 18px 0 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* contacto, texto y listas */
+        .contact,
+        p,
+        ul {
+            font-size: 14px;
+            margin: 6px 0;
+        }
+
+        .contact {
+            text-align: center;
+            color: #555;
+            margin-bottom: 16px;
+        }
+
+        ul {
+            padding-left: 18px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        /* footer */
+        footer {
+            text-align: center;
+            margin-top: 15px;
+            color: #6d6c6c;
+            font-size: 0.9rem;
+        }
