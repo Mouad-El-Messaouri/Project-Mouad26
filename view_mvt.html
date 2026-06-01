@@ -11,26 +11,47 @@
 <body>
   <div class="app">
 
-    <!-- ── LEFT PANEL ───────────────────────────────────────────────────── -->
     <div class="left-panel">
       <div class="panel-logo">
         <div class="logo-text">UCR&#9733;STAR</div>
         <div class="logo-subtitle">Spatial Data Viewer</div>
       </div>
+
       <div class="panel-search">
         <input type="text" class="search-input" placeholder="Search datasets..." id="searchInput">
       </div>
+
       <div class="dataset-count">
         <span id="datasetCount">0</span> Datasets
-        <span class="clear-filters" onclick="clearFilters()" style="margin-left:8px;">Clear filters</span>
+        <span class="clear-filters" onclick="clearFilters()">Clear all</span>
       </div>
+
       <div class="dataset-list" id="datasetList">
         <div style="padding:40px 20px;text-align:center;color:#9aa0a6;">Loading datasets...</div>
       </div>
+
+      <div class="layers-section">
+        <div class="layers-header">
+          <span class="layers-title">&#127758; Active Layers</span>
+          <span class="layers-hint">click dataset to add</span>
+        </div>
+        <div class="layers-panel" id="layersPanel">
+          <div class="layers-empty">No layers loaded</div>
+        </div>
+      </div>
+
       <div class="dataset-detail">
         <div class="download-btns">
           <button class="download-btn" id="downloadAllBtn" disabled onclick="downloadDataset('all')">Download All</button>
           <button class="download-btn secondary" id="downloadViewBtn" disabled onclick="downloadDataset('viewport')">Current View</button>
+        </div>
+        <div class="download-format-row">
+          <span class="detail-label" style="font-size:10px;">Format</span>
+          <select id="downloadFormat" class="download-format-select">
+            <option value="geojson">GeoJSON</option>
+            <option value="csv">CSV</option>
+            <option value="shp">Shapefile (.zip)</option>
+          </select>
         </div>
         <div class="detail-title" id="detailTitle">Select a dataset</div>
         <div class="detail-row"><span class="detail-label">Size:</span><span class="detail-value" id="detailSize">-</span></div>
@@ -40,11 +61,9 @@
       </div>
     </div>
 
-    <!-- ── MAP ──────────────────────────────────────────────────────────── -->
     <div id="map">
       <canvas id="label-canvas"></canvas>
 
-      <!-- Style panel -->
       <div class="style-panel" id="stylePanel">
         <div class="style-header">
           &#127912; Styling Options
@@ -118,30 +137,27 @@
         <button class="apply-style-btn" onclick="applyStyle()">Apply Style</button>
       </div>
 
-      <!-- Legend -->
       <div class="legend" id="legend">
         <div class="legend-title">Legend</div>
         <div id="legendContent"></div>
       </div>
 
-      <!-- Go to location -->
       <div class="goto-box">
         <div class="goto-input-group">
-          <input type="text" class="goto-input" id="gotoInput" placeholder="Lat, Lng or place" autocomplete="off">
+          <input type="text" class="goto-input" id="gotoInput" placeholder="Lat, Lng or place name" autocomplete="off">
           <button class="goto-btn" id="gotoBtn">Go</button>
         </div>
+        <div class="goto-results" id="gotoResults"></div>
       </div>
 
-      <!-- Map controls -->
       <div class="map-controls">
         <button class="zoom-btn" id="zoomIn"  title="Zoom In">+</button>
         <button class="zoom-btn" id="zoomOut" title="Zoom Out">&#8722;</button>
         <button class="zoom-btn" title="Styling Options" onclick="toggleStylePanel()">&#127912;</button>
       </div>
-    </div><!-- #map -->
-  </div><!-- .app -->
+    </div>
+  </div>
 
-  <!-- ── OLLAMA AI ASSISTANT ────────────────────────────────────────────── -->
   <button class="ai-fab" id="aiFab" title="AI Style Assistant (Ollama)">&#129302;</button>
 
   <div class="ai-panel" id="aiPanel">
@@ -153,7 +169,7 @@
       <span class="ai-head-x" onclick="aiToggle()">&#215;</span>
     </div>
     <div class="ai-model-bar">
-      <span class="ai-model-label">Modelo</span>
+      <span class="ai-model-label">Model</span>
       <select class="ai-model-select" id="aiModelSelect">
         <option value="llama3.2">llama3.2</option>
         <option value="llama3.1">llama3.1</option>
@@ -191,7 +207,6 @@
     </div>
   </div>
 
-  <!-- Dark mode toggle -->
   <button id="darkToggle" class="theme-toggle" title="Toggle Dark Mode">&#127769;</button>
 
   <script src="view_mvt.js"></script>
