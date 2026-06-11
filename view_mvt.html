@@ -9,16 +9,19 @@
   <link rel="stylesheet" href="view_mvt.css">
 </head>
 <body>
+
   <div class="app">
 
+    <!-- ── LEFT PANEL ──────────────────────────────────────────────────────── -->
     <div class="left-panel">
+
       <div class="panel-logo">
         <div class="logo-text">UCR&#9733;STAR</div>
         <div class="logo-subtitle">Spatial Data Viewer</div>
       </div>
 
       <div class="panel-search">
-        <input type="text" class="search-input" placeholder="Search datasets..." id="searchInput">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search datasets...">
       </div>
 
       <div class="dataset-count">
@@ -54,16 +57,28 @@
           </select>
         </div>
         <div class="detail-title" id="detailTitle">Select a dataset</div>
-        <div class="detail-row"><span class="detail-label">Size:</span><span class="detail-value" id="detailSize">-</span></div>
-        <div class="detail-row"><span class="detail-label">Records:</span><span class="detail-value" id="detailRecords">-</span></div>
-        <div class="detail-row"><span class="detail-label">Geometry:</span><span class="detail-value" id="detailGeometry">-</span></div>
+        <div class="detail-row">
+          <span class="detail-label">Size:</span>
+          <span class="detail-value" id="detailSize">-</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Records:</span>
+          <span class="detail-value" id="detailRecords">-</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Geometry:</span>
+          <span class="detail-value" id="detailGeometry">-</span>
+        </div>
         <div class="detail-description" id="detailDesc" style="display:none;"></div>
       </div>
-    </div>
 
+    </div><!-- /left-panel -->
+
+    <!-- ── MAP ────────────────────────────────────────────────────────────── -->
     <div id="map">
       <canvas id="label-canvas"></canvas>
 
+      <!-- Style panel -->
       <div class="style-panel" id="stylePanel">
         <div class="style-header">
           &#127912; Styling Options
@@ -71,7 +86,9 @@
         </div>
         <div class="style-section">
           <label class="style-label">Style by attribute</label>
-          <select class="style-select" id="attributeSelect"><option value="">Default style</option></select>
+          <select class="style-select" id="attributeSelect">
+            <option value="">Default style</option>
+          </select>
         </div>
         <div class="style-row">
           <div class="style-section">
@@ -85,17 +102,39 @@
           <div class="style-section">
             <label class="style-label">Color scheme</label>
             <select class="style-select" id="colorScheme">
-              <option value="blues">Blues</option>
-              <option value="reds">Reds</option>
-              <option value="greens">Greens</option>
-              <option value="viridis">Viridis</option>
-              <option value="rainbow">Rainbow</option>
+              <optgroup label="── Sequential ──">
+                <option value="blues">Blues</option>
+                <option value="reds">Reds</option>
+                <option value="greens">Greens</option>
+                <option value="oranges">Oranges</option>
+                <option value="purples">Purples</option>
+                <option value="greys">Greys</option>
+              </optgroup>
+              <optgroup label="── Diverging ──">
+                <option value="rdbu">Red → Blue</option>
+                <option value="rdylgn">Red → Green</option>
+                <option value="spectral">Spectral</option>
+              </optgroup>
+              <optgroup label="── Perceptual ──">
+                <option value="viridis">Viridis</option>
+                <option value="magma">Magma</option>
+                <option value="plasma">Plasma</option>
+                <option value="inferno">Inferno</option>
+                <option value="rainbow">Rainbow</option>
+              </optgroup>
+              <optgroup label="── Categorical ──">
+                <option value="tableau">Tableau</option>
+                <option value="bold">Bold</option>
+                <option value="safe">Colorblind-safe</option>
+              </optgroup>
             </select>
           </div>
         </div>
         <div class="style-section">
           <label class="style-label">Label attribute</label>
-          <select class="style-select" id="labelSelect"><option value="">No labels</option></select>
+          <select class="style-select" id="labelSelect">
+            <option value="">No labels</option>
+          </select>
         </div>
         <div class="style-row">
           <div class="style-section">
@@ -109,7 +148,8 @@
           </div>
           <div class="style-section">
             <label class="style-label">Label color</label>
-            <input type="color" class="style-input" id="labelColor" value="#202124" style="height:38px;padding:4px 6px;cursor:pointer;">
+            <input type="color" class="style-input" id="labelColor" value="#202124"
+                   style="height:38px;padding:4px 6px;cursor:pointer;">
           </div>
         </div>
         <div class="style-row">
@@ -135,41 +175,48 @@
           </div>
         </div>
         <button class="apply-style-btn" onclick="applyStyle()">Apply Style</button>
-      </div>
+      </div><!-- /style-panel -->
 
+      <!-- Legend -->
       <div class="legend" id="legend">
         <div class="legend-title">Legend</div>
         <div id="legendContent"></div>
       </div>
 
+      <!-- Go-to box -->
       <div class="goto-box">
         <div class="goto-input-group">
-          <input type="text" class="goto-input" id="gotoInput" placeholder="Lat, Lng or place name" autocomplete="off">
+          <input type="text" class="goto-input" id="gotoInput"
+                 placeholder="Lat, Lng or place name" autocomplete="off">
           <button class="goto-btn" id="gotoBtn">Go</button>
         </div>
         <div class="goto-results" id="gotoResults"></div>
       </div>
 
+      <!-- Map controls -->
       <div class="map-controls">
         <button class="zoom-btn" id="zoomIn"  title="Zoom In">+</button>
         <button class="zoom-btn" id="zoomOut" title="Zoom Out">&#8722;</button>
         <button class="zoom-btn" title="Styling Options" onclick="toggleStylePanel()">&#127912;</button>
       </div>
-    </div>
-  </div>
 
+    </div><!-- /map -->
+
+  </div><!-- /app -->
+
+  <!-- ── AI PANEL ──────────────────────────────────────────────────────────── -->
   <button class="ai-fab" id="aiFab" title="AI Style Assistant (Ollama)">&#129302;</button>
 
   <div class="ai-panel" id="aiPanel">
     <div class="ai-head">
       <div>
-        <div class="ai-head-title">&#129302; AI Style Assistant</div>
-        <div class="ai-head-sub">Ollama &middot; 100% local &middot; free</div>
+        <div class="ai-head-title">Asistente IA de Estilos</div>
+        <div class="ai-head-sub">Ollama &middot; 100% local</div>
       </div>
       <span class="ai-head-x" onclick="aiToggle()">&#215;</span>
     </div>
     <div class="ai-model-bar">
-      <span class="ai-model-label">Model</span>
+      <span class="ai-model-label">Modelo</span>
       <select class="ai-model-select" id="aiModelSelect">
         <option value="llama3.2">llama3.2</option>
         <option value="llama3.1">llama3.1</option>
@@ -180,33 +227,34 @@
         <option value="phi3">phi3</option>
         <option value="deepseek-r1">deepseek-r1</option>
       </select>
-      <div class="ai-status-dot" id="aiStatusDot" title="Ollama status"></div>
+      <div class="ai-status-dot" id="aiStatusDot" title="Estado de Ollama"></div>
     </div>
     <div class="ai-chips">
-      <button class="ai-chip" onclick="aiQuick('describe')">&#128269; Describe</button>
-      <button class="ai-chip" onclick="aiQuick('suggest')">&#128161; Suggest style</button>
-      <button class="ai-chip" onclick="aiQuick('best')">&#128506; Best attribute</button>
-      <button class="ai-chip" onclick="aiQuick('insight')">&#128202; Insights</button>
-      <button class="ai-chip" onclick="aiQuick('anomaly')">&#9888; Anomalies</button>
+      <button class="ai-chip" onclick="aiQuick('describe')">&#128269; Describir</button>
+      <button class="ai-chip" onclick="aiQuick('suggest')">&#128161; Sugerir estilo</button>
+      <button class="ai-chip" onclick="aiQuick('best')">&#128506; Mejor atributo</button>
+      <button class="ai-chip" onclick="aiQuick('insight')">&#128202; Analizar</button>
+      <button class="ai-chip" onclick="aiQuick('anomaly')">&#9888; Anomalías</button>
     </div>
     <div class="ai-msgs" id="aiMsgs">
       <div class="ai-msg info">
-        Make sure <strong>Ollama</strong> is running:<br>
+        Asegúrate de que <strong>Ollama</strong> está en marcha:<br>
         <code>OLLAMA_ORIGINS="*" ollama serve</code><br>
-        Then select a dataset and ask me anything.
+        Selecciona un dataset y pregúntame lo que quieras.
       </div>
     </div>
     <button class="ai-apply-btn" id="aiApplyBtn" onclick="aiApplyStyle()">
-      &#9889; Apply suggested style
+      &#9889; Aplicar estilo sugerido
     </button>
     <div class="ai-input-row">
       <input class="ai-in" type="text" id="aiIn"
-        placeholder="e.g. color counties by land area using blues..."
-        autocomplete="off">
+             placeholder="p.ej. colorea los condados por área usando azules..."
+             autocomplete="off">
       <button class="ai-send-btn" id="aiSendBtn" onclick="aiSend()">&#9654;</button>
     </div>
-  </div>
+  </div><!-- /ai-panel -->
 
+  <!-- ── THEME TOGGLE ───────────────────────────────────────────────────────── -->
   <button id="darkToggle" class="theme-toggle" title="Toggle Dark Mode">&#127769;</button>
 
   <script src="view_mvt.js"></script>
